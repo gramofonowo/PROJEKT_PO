@@ -5,17 +5,20 @@
 #include <vector>
 #include "Sensor.h"
 #include "TempSensor.h"
+#include "MotionSensor.h"
 
 
-
-class ASubject { 
+class ASubject {
 protected:
-	//std::vector<Sensor*> v, v_temp, v_smoke, v_motion;  napisz czujniki
+	std::vector<Sensor*> v, v_temp, v_smoke, v_motion;
 	std::string name;
 public:
-	/* 
-	TO-DO
-	*/
+	ASubject(std::string name);
+	void Attach(Sensor *room, int s);
+	void Detach(Sensor *room);
+	void Notify(float temp);
+	std::vector<Sensor*> getV(std::string v);
+	std::string getSensorType(Sensor *sensor);
 };
 
 
