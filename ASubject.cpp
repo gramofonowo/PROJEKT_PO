@@ -3,7 +3,7 @@
 #include <typeinfo>
 #include <iterator>
 
-using namespace std;
+using namespace std; 
 
 ASubject::ASubject(string name){
 	this->name = name;

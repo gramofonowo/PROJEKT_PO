@@ -8,7 +8,7 @@
 
 
 
-class ASubject {
+class ASubject { 
 protected:
 	//std::vector<Sensor*> v, v_temp, v_smoke, v_motion;  napisz czujniki
 	std::string name;
