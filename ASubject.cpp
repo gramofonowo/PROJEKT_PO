@@ -9,12 +9,12 @@ ASubject::ASubject(string name){
 	this->name = name;
 }
 
-void ASubject::Attach(Sensor *sensor, int s){
+void ASubject::Attach(Sensor *sensor){
 
 	string type = getSensorType(sensor);
 	v.push_back(sensor);
 
-	cout << "\nWłączono " << sensor->getName();
+	cout << "\nWlaczono " << sensor->getName();
 	cout << " w " << this->name;
 
 	if(type == "t")
@@ -63,7 +63,7 @@ void ASubject::Detach(Sensor *sensor){
 	v.erase(std::remove(v.begin(), v.end(), sensor), v.end());
 	sensor->setActive(false);
 
-	cout << "\nWyłączono " << sensor->getName();
+	cout << "\nWylaczono " << sensor->getName();
 	cout << " w " << this->name;
 
 }

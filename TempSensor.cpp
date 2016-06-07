@@ -1,31 +1,29 @@
 #include <iostream>
-#include <cstdlib>
-#include <cstdio>
-#include <ctime>
 #include "TempSensor.h"
 
 using namespace std;
 
-double temp_value;
 
 TempSensor::TempSensor(string a) : Sensor(a){
-	 srand(time(NULL));
-	 value = Sensor::fRand(2.0, 1.0);
+	 temp = DEFAULT_TEMP;
+}
 
+TempSensor::TempSensor(string a, float temp) : Sensor(a){
+	this->temp = temp;
 }
 
 void TempSensor::Update(float temp) {
 	this->temp = temp;
-	cout << "\nTemperatura " << getName() << " wynosi " << temp << " stopni";
+	cout << endl << this->getName() << ", Temperatura wynosi " << temp << " stopni";
 }
 
 
 void TempSensor::getStatus(){
 	if(isActive()){
-		cout << "\nNazwa: " << getName();
+		cout << "Nazwa: " << getName();
 		cout <<", Temperatura: " << temp;
 	} else {
-		cout << "\nCzujnik " << getName();
-		cout << " jest wyłączony.";
+		cout << "Czujnik " << getName();
+		cout << " jest wylaczony.";
 	}
 }

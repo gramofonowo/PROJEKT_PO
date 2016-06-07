@@ -14,7 +14,9 @@ class Sensor : IObserver{
 	bool on;
 public:
 	Sensor(std::string n);
-	virtual ~Sensor(){};
+	virtual ~Sensor(){
+		std::cout << "\n SENSOR DOWN\n";
+	};
 	virtual void Update(float temp) = 0;
 	virtual void getStatus() = 0;
 
