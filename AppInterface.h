@@ -14,6 +14,7 @@ protected:
 public:
 	AppInterface();
 	void addRoom();
+	void addRoom(DummyRoom *r);
 	virtual ~AppInterface(){
 		std::cout << "\n INT DOWN\n";
 		for(std::vector<DummyRoom*>::iterator it = rooms.begin(); it != rooms.end(); ++it){
@@ -23,8 +24,10 @@ public:
 	void deleteRoom();
 	void displayRooms();
 	void displaySensors();
+	void simulate();
 	void addSensor(DummyRoom *dr);
 	void menu();
+	void createDummyObjects();
 };
 
 

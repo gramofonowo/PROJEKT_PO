@@ -5,6 +5,8 @@
 
 class TempSensor : public Sensor{
 	float temp;
+	bool cooling;
+	bool heating;
 public:
 	TempSensor(std::string n);
 	TempSensor(std:: string n, float temp);

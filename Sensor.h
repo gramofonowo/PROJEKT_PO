@@ -10,7 +10,6 @@
 
 class Sensor : IObserver{
 	std::string name;
-	float temp;
 	bool on;
 public:
 	Sensor(std::string n);

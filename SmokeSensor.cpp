@@ -1,5 +1,6 @@
 #include <iostream>
 #include "SmokeSensor.h"
+#include "ASubject.h"
 #include <cstdio>
 
 using namespace std;
@@ -13,25 +14,29 @@ SmokeSensor::SmokeSensor(string a, float smoke) : Sensor(a){
 }
 
 void SmokeSensor::Update(float temp){
-	float t = Sensor::fRand(0.0, 100.0);
 
-	if(smoke == 0.0){
-		if(t >= 85.0){
-			float random_value = Sensor::fRand(1.0, 3.0);
-			smoke += random_value;
-		}
+	float x = Sensor::fRand(0.0, 100.0);
+
+	if(x >= 93.0){
+		setActive(false);
 	} else {
-		float t2 = Sensor::fRand(0.0, 100.0);
-		if(t2 >= 75.0){
-			float random_value = Sensor::fRand(1.0, 5.0);
-			smoke += random_value;
+		setActive(true);
+		if(smoke == 0.0){
+			float t = Sensor::fRand(0.0, 100.0);
+			if(t >= 80.0){
+				float random_value = Sensor::fRand(1.0, 10.0);
+				smoke += random_value;
+			}
 		} else {
-			if(smoke > 2.0)
-				smoke -= 2.0;
-			else
-				smoke = 0.0;
+			float t2 = Sensor::fRand(0.0, 100.0);
+			if(t2 >= 30.0){
+				float random_value = Sensor::fRand(1.0, 5.0);
+				smoke += random_value;
+			}
 		}
 	}
+
+
 	getStatus();
 
 }
@@ -39,21 +44,30 @@ void SmokeSensor::Update(float temp){
 void SmokeSensor::getStatus(){
 	if(isActive()){
 		if(smoke > 10.0){
+			cout << "\nRodzaj: Czujnik dymu";
+			cout << ", Nazwa: " << getName();
+			cout << ", STAN KRYTYCZNY ";
 			printf("%.1f", smoke);
-			cout << "ALARM!";
+			cout << "% DYMU W POWIETRZU";
 		}else if(smoke > 0.0) {
-			cout << endl << getName();
+			cout << "\nRodzaj: Czujnik dymu";
+			cout << ", Nazwa: " << getName();
 			cout <<", Dym: ";
 			printf("%.1f", smoke);
 			cout << "% !";
 		} else {
-			cout << endl << getName();
-			cout <<", nie wykryl dymu ";
+			cout << "\nRodzaj: Czujnik dymu";
+			cout << ", Nazwa: " << getName();
+			cout <<", nie wykrył dymu ";
+		}
+		if(smoke > 25.0){
+			cout << " --> GIT COMMIT, GIT PUSH & LEAVE THE BUILDING! <-- ";
 		}
 
 	} else {
-		cout << "Czujnik " << getName();
-		cout << " jest wylaczony.";
+		cout << "\nRodzaj: Czujnik dymu";
+		cout << ", Nazwa: " << getName();
+		cout << ", przerwal swoje dzialanie!";
 	}
 }
 

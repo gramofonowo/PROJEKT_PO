@@ -97,3 +97,4 @@ vector<Sensor*> ASubject::getV(string s){
 	else
 		return v;
 }
+

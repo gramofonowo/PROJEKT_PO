@@ -26,3 +26,4 @@ void Sensor::setActive(bool active){
 bool Sensor::isActive(){
 	return on;
 }
+
